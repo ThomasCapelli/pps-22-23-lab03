@@ -37,7 +37,8 @@ object Lists extends App :
 
     import u02.Optionals.Option.*
     def max(l: List[Int]): Option[Int] = l match
-      case Cons(h, t) => max(t);
+      case Cons(h, t) if t == Nil() => Some(h);
+      case Cons(h, t) => max(filter(t)(_ > h));
       case Nil() => None();
 
 

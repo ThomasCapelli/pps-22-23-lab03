@@ -32,5 +32,5 @@ class ListTest:
 
   import u02.Optionals.Option.*
   @Test def testMax() =
-    assertEquals(Some(25), max(l))
+    assertEquals(Some(20), max(l))
     assertEquals(None(), max(Nil()))
