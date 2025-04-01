@@ -1,5 +1,6 @@
 package u03
 
+import u02.AlgebraicDataTypes.Person
 import u02.Optionals.Option
 
 import scala.annotation.tailrec
@@ -65,3 +66,16 @@ object Lists extends App :
   val tail = Cons(40, Nil())
   println(append(Nil(), tail)) //Cons (40 , Nil ())
   println(append(l, tail)) // Cons (10 , Cons (20 , Cons (30 , Cons (40 , Nil ()))))
+
+  import u02.Modules.Person.*
+
+  def getCourses(l: List[Person]): List[String] = l match
+    case Cons(Person.Teacher(_, c), t) => Cons(c, getCourses(t))
+    case Cons(_, t) => getCourses(t)
+    case Nil() => Nil()
+
+  def getCoursesFlatMap(l: List[Person]): List[String] = flatMap(l)(p => p match
+    case Person.Teacher(_, c) => Cons(c, Nil())
+    case _ => Nil()
+  )
+
